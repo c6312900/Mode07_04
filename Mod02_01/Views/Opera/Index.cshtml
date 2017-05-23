@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Mod02_01.Models.Opera>
+@{
+    ViewBag.Title = "Opera List";
+}
+
+
+    <div> 
+        @*<h1>OK</h1>
+    <ul>
+      @foreach (var item in  Model)
+      {
+        <li>@item.OperaID -@item.Composer-</li>
+      }
+    </ul>*@
+
+        <table border="1">
+            <tr>
+                <th>@Html.DisplayNameFor(m=>m.OperaID)</th>
+                <th>@Html.DisplayNameFor(m=>m.Title)</th>
+                <th>@Html.DisplayNameFor(m=>m.Year)</th>
+                <th>@Html.DisplayNameFor(m=>m.Composer)</th>   
+                <th>Detail</th>
+                <th>Edit1</th>
+                <th>Delete</th>         
+            </tr>
+            @foreach (var aa in Model)
+            {
+                <tr>
+                    <th>@Html.DisplayFor(mi => aa.OperaID)</th>
+                    <th>@Html.DisplayFor(mi => aa.Title)</th>
+                    <th>@Html.DisplayFor(mi => aa.Year)</th>
+                    <th>@Html.DisplayFor(mi => aa.Composer)</th> 
+                    <th>@Html.ActionLink("Detail","Details", new { id=aa.OperaID})</th>  
+                    <th>@Html.ActionLink("Edit", "Edit", new { id = aa.OperaID })</th>  
+                    <th>@Html.ActionLink("Delete", "Delete", new { id = aa.OperaID }, new {onclick= "return confirm('delete ok?');"})</th> 
+                </tr>
+               
+            }
+        </table>
+        <p>
+            @Html.ActionLink("New Opera","Create")
+        </p>
+
+        <p>
+            @using (Html.BeginForm("FilterData", "Opera", FormMethod.Get))
+            {
+                @*<input type="text" name="number" />*@
+               @Html.TextBox("number", 2, new { maxLength=20 })
+                 <input type="submit" />
+            }
+
+        </p>
+        
+       
+     </div>
+

@@ -1,0 +1,57 @@
+﻿@model Mod02_01.Models.Opera
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+
+            <div>@Html.ValidationSummary()</div>
+
+            @Html.HiddenFor(m => m.OperaID)
+            <fieldset>
+                <legend>Edit Opera</legend>
+               
+
+               
+                 <div>@Html.LabelFor(m => m.Title)</div>
+                <div>
+                    @Html.EditorFor(m => m.Title)
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+            <div>@Html.LabelFor(m => m.Year)</div>
+            <div>
+                @Html.EditorFor(m => m.Year)
+            @Html.ValidationMessageFor(m => m.Year)
+        </div>
+        <div>@Html.LabelFor(m => m.Composer)</div>
+        <div>
+            @Html.EditorFor(m => m.Composer)
+        @Html.ValidationMessageFor(m => m.Composer)
+    </div>
+    <div>
+        <input type="submit" value="Save Opera" />
+    </div>
+</fieldset>
+        }
+
+
+        <p>
+            @Html.ActionLink("Back to Opera List", "Index");
+        </p>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>
